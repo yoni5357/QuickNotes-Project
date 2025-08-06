@@ -20,10 +20,12 @@ function App() {
   }
 
   return (
-    <>
+    <div className="main-container">
       <NoteEditor onAdd={addNote}/>
-      {renderNotes()}
-    </>
+      <div className="notes-container">
+        {renderNotes()}
+      </div>
+    </div>
   )
 }
 

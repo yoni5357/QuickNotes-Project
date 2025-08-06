@@ -1,4 +1,5 @@
 import { useState } from "react"
+import "./NoteEditor.css"
 
 function NoteEditor({onAdd}){
 
@@ -11,7 +12,7 @@ function NoteEditor({onAdd}){
 
     return(
         <div className="editor-container">
-            <input type="text-area" value={text} onChange={(e) => {setText(e.target.value)}}/>
+            <textarea value={text} placeholder="Your note..." onChange={(e) => {setText(e.target.value)}}/>
             <button onClick={handleAdd}>Add</button>
         </div>
     )
