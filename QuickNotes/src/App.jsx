@@ -7,15 +7,21 @@ function App() {
 
   const [noteArray, setNoteArray] = useState([]);
 
-  const addNote = (text) => {
-    setNoteArray(noteArray.concat(text));
+  const addNote = (data) => {
+    setNoteArray(noteArray.concat({'text':data.text, 'time':data.time}));
+  }
+
+  const onClose = (index) => {
+    const confirmed = confirm("Are you sure you want to delete this note?");
+    if(!confirmed){
+      return;
+    }
+    let notes = noteArray.filter((item,i) => i !== index);
+    setNoteArray(notes);
   }
 
   const renderNotes = () => {
-    let notes = []
-    for(let text of noteArray){
-      notes.push(<Note text = {text}/>);
-    }
+    let notes = noteArray.map((data,index) => <Note key={index} text={data.text} time={data.time} close={() => onClose(index)}/>)
     return notes;
   }
 

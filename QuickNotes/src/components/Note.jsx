@@ -1,8 +1,13 @@
 import "./Note.css"
-function Note({text}){
+function Note({text,time,close}){
+
     return(
         <div className="note-container">
-            <p>{text}</p>
+            <div className="top-section">
+                <p className="time-stamp">{time}</p>
+                <button onClick={()=>close()} className="close-button">X</button>
+            </div>
+            <p className="note-text">{text}</p>
         </div>
     )
 }

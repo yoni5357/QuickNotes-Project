@@ -3,3 +3,26 @@
     border-radius: 5px;
     padding:10px;
 }
+
+.time-stamp{
+    color: gray;
+    font-size: small;
+}
+
+.note-text{
+    font-size: larger;
+}
+
+.top-section{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    gap:10px;
+}
+
+.close-button{
+    border:none;
+    background-color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
