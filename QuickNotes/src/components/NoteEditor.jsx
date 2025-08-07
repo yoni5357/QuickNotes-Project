@@ -3,10 +3,11 @@ import "./NoteEditor.css"
 
 function NoteEditor({onAdd}){
 
-    const [text, setText] = useState("")
+    const [text, setText] = useState("");
+    const [title, setTitle] = useState("");
 
     function getNiceTimestamp(date = new Date()) {
-        const month = date.toLocaleString('en-US', { month: 'long' });   // August
+        const month = date.toLocaleString('en-US', { month: 'long' });
         const day   = date.getDate();   
         
         const suffix = (() => {
@@ -19,7 +20,7 @@ function NoteEditor({onAdd}){
             default: return 'th';
             }
         })();
-        const time  = date.toLocaleString('en-US', {                    // 9:23 AM
+        const time  = date.toLocaleString('en-US', {
         hour:   'numeric',
         minute: '2-digit',
         hour12: true
@@ -29,13 +30,15 @@ function NoteEditor({onAdd}){
     }
 
     const handleAdd = () => {
-        let data = {'text': text, 'time': getNiceTimestamp()}
+        let data = {'title': title, 'text': text, 'time': getNiceTimestamp()}
         onAdd(data);
+        setTitle("");
         setText("");
     }
 
     return(
         <div className="editor-container">
+            <input type="text" value={title} placeholder="Title" onChange={(e) => {setTitle(e.target.value)}} />
             <textarea value={text} placeholder="Your note..." onChange={(e) => {setText(e.target.value)}}/>
             <button onClick={handleAdd}>Add</button>
         </div>

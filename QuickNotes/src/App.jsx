@@ -8,7 +8,7 @@ function App() {
   const [noteArray, setNoteArray] = useState([]);
 
   const addNote = (data) => {
-    setNoteArray(noteArray.concat({'text':data.text, 'time':data.time}));
+    setNoteArray(noteArray.concat(data));
   }
 
   const onClose = (index) => {
@@ -21,7 +21,7 @@ function App() {
   }
 
   const renderNotes = () => {
-    let notes = noteArray.map((data,index) => <Note key={index} text={data.text} time={data.time} close={() => onClose(index)}/>)
+    let notes = noteArray.map((data,index) => <Note key={index} title={data.title} text={data.text} time={data.time} close={() => onClose(index)}/>)
     return notes;
   }
 
