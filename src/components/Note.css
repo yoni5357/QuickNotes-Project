@@ -30,11 +30,20 @@
 .close-button{
     border:none;
     width: 30px;
-    background-color: white;
+    background-color: gray;
     font-weight: bold;
     font-size: larger;
     cursor: pointer;
     flex: 0 0 auto;
+}
+
+.note-container .bottom-section{
+    display: flex;
+    flex-direction: column;
+}
+
+.note-container .bottom-section > p{
+    margin: 0;
 }
 
 .personal{

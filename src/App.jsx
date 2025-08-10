@@ -65,9 +65,10 @@ function App() {
       >
         {editIsOpen && noteArray[editIndex] && (
           <EditNote 
-            title={noteArray[editIndex].title}
-            text={noteArray[editIndex].text}
-            time={noteArray[editIndex].time}
+            // title={noteArray[editIndex].title}
+            // text={noteArray[editIndex].text}
+            // time={noteArray[editIndex].time}
+            data={noteArray[editIndex]}
             update={updateNote}/>
         )}
       </Modal>

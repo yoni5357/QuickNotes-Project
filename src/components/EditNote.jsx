@@ -2,12 +2,12 @@ import { useState } from "react";
 import { getNiceTimestamp } from "../util";
 import './EditNote.css'
 
-function EditNote({title,text,time,update}){
-    const [noteTitle, setNoteTitle] = useState(title);
-    const [noteText, setNoteText] = useState(text);
+function EditNote({data,update}){
+    const [noteTitle, setNoteTitle] = useState(data.title);
+    const [noteText, setNoteText] = useState(data.text);
 
     const handleUpdate = () => {
-        update({'title':noteTitle,'text':noteText, 'time':time, 'updatedTime':getNiceTimestamp()})
+        update({'title':noteTitle,'text':noteText, 'time':data.time,'category':data.category, 'updatedTime':getNiceTimestamp()} )
     }
 
     return(
