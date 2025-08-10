@@ -20,6 +20,22 @@
 
 }
 
+.filter-section{
+  margin: auto;
+  display: flex;
+  width:80%;
+  justify-content: center;
+}
+
+.filter-section input{
+  width:40%;
+}
+
+.clicked{
+  background-color:black;
+  color:white;
+}
+
 .modal-container{
   position:absolute;
   top:0;

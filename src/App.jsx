@@ -10,6 +10,8 @@ function App() {
   const [noteArray, setNoteArray] = useState([]);
   const [editIsOpen, setEditIsOpen] = useState(false);
   const [editIndex, setEditIndex] = useState(0);
+  const [filter, setFilter] = useState("");
+  const [categoryFilter, setCategoryFilter] = useState("");
 
   const addNote = (data) => {
     setNoteArray(noteArray.concat(data));
@@ -35,24 +37,50 @@ function App() {
     setNoteArray(newArray);
   }
 
+  const handleCategoryFilter = (filter) => {
+    if(categoryFilter === filter){
+      setCategoryFilter("")
+    }
+    else{
+      setCategoryFilter(filter)
+    }
+  }
+
+  const isClicked = (value) => {
+    return value === categoryFilter ? "clicked" : "";
+  }
+
   const renderNotes = () => {
-    let notes = noteArray.map((data,index) =>
-       <Note 
-        key={index} 
-        title={data.title} 
-        text={data.text} 
-        time={data.time} 
-        updatedTime={data.updatedTime}
-        close={() => onClose(index)} 
-        edit={() => onNoteClick(index)}
-        category={data.category}
-        />)
+    let notes = noteArray.filter(data => {
+      if(!(data.category.includes(categoryFilter))){
+        return;
+      }
+      if(data.title.includes(filter) || data.text.includes(filter)){
+        return data;
+      }
+    }).map((data,index) =>
+      <Note 
+      key={index} 
+      title={data.title} 
+      text={data.text} 
+      time={data.time} 
+      updatedTime={data.updatedTime}
+      close={() => onClose(index)} 
+      edit={() => onNoteClick(index)}
+      category={data.category}
+      />)
     return notes;
   }
 
   return (
     <div className="main-container">
       <NoteEditor onAdd={addNote}/>
+      <div className='filter-section'>
+        <input type="text" placeholder='Filter by...' value={filter} onChange={(e) => setFilter(e.target.value)} />
+        <button className={isClicked("personal")} onClick={()=>{handleCategoryFilter("personal")}}>Personal</button>
+        <button className={isClicked("work")} onClick={()=>{handleCategoryFilter("work")}}>Work</button>
+        <button className={isClicked("family")} onClick={()=>{handleCategoryFilter("family")}}>Family</button>
+      </div>
       <div className="notes-container">
         {renderNotes()}
       </div>
@@ -65,9 +93,6 @@ function App() {
       >
         {editIsOpen && noteArray[editIndex] && (
           <EditNote 
-            // title={noteArray[editIndex].title}
-            // text={noteArray[editIndex].text}
-            // time={noteArray[editIndex].time}
             data={noteArray[editIndex]}
             update={updateNote}/>
         )}
