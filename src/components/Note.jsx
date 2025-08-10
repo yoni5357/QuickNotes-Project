@@ -1,5 +1,5 @@
 import "./Note.css"
-function Note({title,text,time,updatedTime,close,edit}){
+function Note({title,text,time,updatedTime,close,edit,category}){
 
     const handleClose = (e) => {
         e.stopPropagation()
@@ -7,7 +7,7 @@ function Note({title,text,time,updatedTime,close,edit}){
     }
 
     return(
-        <div className="note-container" onClick={() => edit()}>
+        <div className={`note-container ${category}`} onClick={() => edit()}>
             <div className="top-section">
                 <button onClick={handleClose} className="close-button">X</button>
             </div>

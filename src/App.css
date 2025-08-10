@@ -1,6 +1,9 @@
 .main-container{
   position:relative;
   width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .notes-container{
@@ -26,5 +29,5 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(172, 181, 189,0.5);
+  background-color: rgba(202, 207, 211, 0.5);
 }

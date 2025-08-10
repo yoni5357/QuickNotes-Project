@@ -3,7 +3,7 @@
     border-radius: 5px;
     padding:10px;
     cursor:pointer;
-    width: 300px;
+    width: 250px;
     word-wrap: break-word;
     overflow-wrap: break-word;
 }
@@ -29,8 +29,22 @@
 
 .close-button{
     border:none;
+    width: 30px;
     background-color: white;
     font-weight: bold;
     font-size: larger;
     cursor: pointer;
+    flex: 0 0 auto;
+}
+
+.personal{
+    background-color: aqua;
+}
+
+.work{
+    background-color: crimson;
+}
+
+.family{
+    background-color: chartreuse;
 }

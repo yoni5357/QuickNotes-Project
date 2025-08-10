@@ -45,6 +45,7 @@ function App() {
         updatedTime={data.updatedTime}
         close={() => onClose(index)} 
         edit={() => onNoteClick(index)}
+        category={data.category}
         />)
     return notes;
   }
@@ -57,7 +58,6 @@ function App() {
       </div>
       <Modal 
         className="note-edit-container"
-        // bodyOpenClassName="modal-container"
         overlayClassName="modal-container"
         isOpen={editIsOpen}
         onRequestClose={() => setEditIsOpen(false)}
