@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState ,useEffect} from 'react'
 import './App.css'
 import NoteEditor from './components/NoteEditor';
 import Note from './components/Note';
@@ -12,6 +12,20 @@ function App() {
   const [editIndex, setEditIndex] = useState(0);
   const [filter, setFilter] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("");
+  const [fristMount, setFirstMount] = useState(true);
+
+  useEffect(() => {
+    if(localStorage.getItem('notes')){
+      setNoteArray(JSON.parse(localStorage.getItem('notes')))
+    }
+  },[])
+
+  useEffect(() => {
+    if(!fristMount){
+      localStorage.setItem('notes', JSON.stringify(noteArray));
+    }
+    setFirstMount(false);
+  },[noteArray])
 
   const addNote = (data) => {
     setNoteArray(noteArray.concat(data));
